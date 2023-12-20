@@ -38,7 +38,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-                <span className="flex gap-1 justify-center items-center text-base text-[white] sm:text-center ">&#169;{currentYear} <a href="#" className="hover:underline"> SCC Technovision™ -</a> All Rights Reserved by Sajeed.</span>
+                <span className="flex flex-col md:flex-row gap-1 justify-center items-center text-base text-[white] sm:text-center ">&#169;{currentYear} <a href="#" className="hover:underline"> SCC Technovision™ -</a> All Rights Reserved by Sajeed.</span>
             </div>
         </footer>
     );

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div className='w-[90%] mx-auto'>
-            <div className='flex justify-between items-center'>
+            <div className='flex flex-col md:flex-row py-12 lg:py-6 xl:py-0 justify-between items-center'>
                 <div className='flex-1 space-y-3'>
                     <h1 className='text-4xl font-bold text-[#363636]'>Task Mastery at Your Fingertips <br /> Achieve More, Stress Less</h1>
                     <p className='text-lg pb-3 font-medium text-[#363636] w-[80%]'>
