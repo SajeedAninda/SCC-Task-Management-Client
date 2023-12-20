@@ -1,8 +1,10 @@
+import Homepage from "./Components/Homepage"
+
 function App() {
 
   return (
     <>
-      Hi
+      <Homepage></Homepage>
     </>
   )
 }
