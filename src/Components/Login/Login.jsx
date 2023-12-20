@@ -1,39 +1,39 @@
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from "../Authentication/AuthProvider";
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    // let { login, googleLogin, githubLogin } = useContext(AuthContext);
-    // let navigate = useNavigate();
-    // let location = useLocation();
-    // console.log(location);
+    let { login, googleLogin, githubLogin } = useContext(AuthContext);
+    let navigate = useNavigate();
+    let location = useLocation();
 
     let handleLogin = (e) => {
-        // e.preventDefault();
-        // let email = e.target.email.value;
-        // let password = e.target.password.value;
-        // login(email, password)
-        //     .then((userCredential) => {
-        //         const user = userCredential.user;
-        //         console.log(user);
-        //         Swal.fire(
-        //             'Good job!',
-        //             'Login Successful!',
-        //             'success'
-        //         )
-        //         navigate(location?.state ? location.state : '/');
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         console.log(errorCode);
-        //         if (errorCode === "auth/invalid-login-credentials") {
-        //             return Swal.fire({
-        //                 icon: 'error',
-        //                 title: 'Oops...',
-        //                 text: 'Invalid Email or Password!'
-        //             })
-        //         }
-        //     });
+        e.preventDefault();
+        let email = e.target.email.value;
+        let password = e.target.password.value;
+        login(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+                Swal.fire(
+                    'Good job!',
+                    'Login Successful!',
+                    'success'
+                )
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                console.log(errorCode);
+                if (errorCode === "auth/invalid-credential") {
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Invalid Email or Password!'
+                    })
+                }
+            });
     }
 
     let handleGoogle = () => {
@@ -64,7 +64,15 @@ const Login = () => {
                 )
                 navigate(location?.state ? location.state : '/');
             }).catch((error) => {
-                console.log(error);
+                const errorCode = error.code;
+                console.log(errorCode);
+                if (errorCode === "auth/account-exists-with-different-credential") {
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Account already exists with same email'
+                    })
+                }
             });
     }
 
