@@ -1,72 +1,79 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Authentication/AuthProvider";
+import Swal from 'sweetalert2';
+import { getAuth, updateProfile } from 'firebase/auth';
+import { app } from "../Authentication/firebase.config";
+
+const auth = getAuth(app);
 
 const Register = () => {
-    // let navigate = useNavigate();
-    // let { register, logOut } = useContext(AuthContext);
+    let navigate = useNavigate();
+    let { register, logOut } = useContext(AuthContext);
     let handleRegister = (e) => {
-        // e.preventDefault();
-        // let email = e.target.email.value;
-        // let password = e.target.password.value;
-        // let name = e.target.fullName.value;
-        // let img = e.target.imgUrl.value;
+        e.preventDefault();
+        let email = e.target.email.value;
+        let password = e.target.password.value;
+        let name = e.target.fullName.value;
+        let img = e.target.imgUrl.value;
 
 
-        // if (password.length < 6) {
-        //     return Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'Password Length should be at least 6 Characters!'
-        //     })
-        // }
+        if (password.length < 6) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Length should be at least 6 Characters!'
+            })
+        }
 
-        // if (!/[A-Z]/.test(password)) {
-        //     return Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'Password should contain at least one capital letter!'
-        //     })
-        // }
-        // if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-        //     return Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'Password should contain at least one special character!'
-        //     })
-        // }
-        // register(email, password)
-        //     .then((userCredential) => {
-        //         const user = userCredential.user;
-        //         updateProfile(auth.currentUser, {
-        //             displayName: name, photoURL: img
-        //         }).then(() => {
-        //             logOut()
-        //                 .then(() => {
-        //                     console.log("Log Out Succesfull");
-        //                 }).catch((error) => {
-        //                     console.log(error);
-        //                 });
-        //             Swal.fire(
-        //                 'Registration Successful!',
-        //                 'Please Login Now with Email & Password',
-        //                 'success'
-        //             )
-        //         }).catch((error) => {
-        //             console.log(error);
-        //         });
-        //         navigate('/login');
-        //         console.log(user);
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         console.log(errorCode);
-        //         if (errorCode === "auth/email-already-in-use") {
-        //             return Swal.fire({
-        //                 icon: 'error',
-        //                 title: 'Oops...',
-        //                 text: 'Email Already in Use!'
-        //             })
-        //         }
-        //     });
+        if (!/[A-Z]/.test(password)) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password should contain at least one capital letter!'
+            })
+        }
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password should contain at least one special character!'
+            })
+        }
+        register(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                updateProfile(auth.currentUser, {
+                    displayName: name, photoURL: img
+                }).then(() => {
+                    logOut()
+                        .then(() => {
+                            console.log("Log Out Succesfull");
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+                    Swal.fire(
+                        'Registration Successful!',
+                        'Please Login Now with Email & Password',
+                        'success'
+                    )
+                }).catch((error) => {
+                    console.log(error);
+                });
+                navigate('/login');
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                console.log(error);
+                if (errorCode === "auth/email-already-in-use") {
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email Already in Use!'
+                    })
+                }
+            });
     }
 
     return (
