@@ -35,7 +35,7 @@ const CreateTask = () => {
         <div className='createTaskBg mx-auto w-[90%] my-8 rounded-xl px-8 py-12'>
             <h1 className='text-center font-bold text-[#363636] text-4xl pb-6'>Create a new Task!</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='flex gap-4'>
+                <div className='flex flex-col md:flex-row gap-4'>
                     <div className='flex-1'>
                         <label className='text-2xl text-[#363636] font-semibold' htmlFor='title'>
                             Task Title:
@@ -67,7 +67,7 @@ const CreateTask = () => {
                     </div>
                 </div>
 
-                <div className='flex gap-4 mt-4'>
+                <div className='flex flex-col md:flex-row gap-4 mt-4'>
                     <div className='flex-1'>
                         <label className='text-2xl text-[#363636] font-semibold' htmlFor='deadline'>
                             Task Deadline:

@@ -195,8 +195,8 @@ const TaskList = () => {
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-[90%] mx-auto my-6 rounded-lg'>
-            <div ref={dropTodo} className='todo border-2 border-blue-600 rounded-xl py-2 px-3'>
-                <h2 className='text-center text-2xl font-bold'>Todos</h2>
+            <div ref={dropTodo} className='todo bg-gradient-to-bl from-[#C5CA55] to-[#73772d] rounded-xl py-2 px-3'>
+                <h2 className='text-center text-3xl font-bold'>Todos</h2>
                 {
                     tasks.length === 0 ?
                         <div className='text-2xl text-center font-semibold mt-2'>
@@ -207,8 +207,8 @@ const TaskList = () => {
                 }
             </div>
 
-            <div ref={dropOngoing} className='ongoing border-2 border-blue-600 rounded-xl py-2 px-3'>
-                <h2 className='text-center text-2xl font-bold'>Ongoing</h2>
+            <div ref={dropOngoing} className='ongoing bg-gradient-to-bl from-[#55CA5A] to-[#338b38] rounded-xl py-2 px-3'>
+                <h2 className='text-center text-3xl font-bold'>Ongoing</h2>
                 {
                     tasks.length === 0 ?
                         <div className='text-2xl text-center font-semibold mt-2'>
@@ -219,8 +219,8 @@ const TaskList = () => {
                 }
             </div>
 
-            <div ref={dropCompleted} className='completed border-2 border-blue-600 rounded-xl py-2 px-3'>
-                <h2 className='text-center text-2xl font-bold'>Completed</h2>
+            <div ref={dropCompleted} className='completed bg-gradient-to-bl from-[#eb8560] to-[#a55132] rounded-xl py-2 px-3'>
+                <h2 className='text-center text-3xl font-bold'>Completed</h2>
                 {
                     tasks.length === 0 ?
                         <div className='text-2xl text-center font-semibold mt-2'>
