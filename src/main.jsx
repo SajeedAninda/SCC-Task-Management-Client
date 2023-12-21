@@ -10,6 +10,7 @@ import Login from './Components/Login/Login.jsx';
 import Register from './Components/Register/Register.jsx';
 import AuthProvider from './Components/Authentication/AuthProvider.jsx';
 import Dashboard from './Components/Task Management Dashboard/Dashboard.jsx';
+import CreateTask from './Components/Task Management Dashboard/CreateTask/CreateTask.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
+  },
+  {
+    path: "/createTask",
+    element: <CreateTask></CreateTask>,
   },
 ]);
 
