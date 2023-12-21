@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import UpdateTask from './Components/Task Management Dashboard/UpdateTask.jsx';
+import PrivateRoute from './Components/Authentication/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,16 +32,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
   },
   {
     path: "/createTask",
-    element: <CreateTask></CreateTask>,
+    element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>,
   },
   {
     path: "/updateTask/:id",
     loader: ({ params }) => fetch(`http://localhost:5000/getTaskbyId/${params.id}`),
-    element: <UpdateTask></UpdateTask>
+    element: <PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>
   }
 ]);
 
