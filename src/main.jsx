@@ -12,6 +12,8 @@ import AuthProvider from './Components/Authentication/AuthProvider.jsx';
 import Dashboard from './Components/Task Management Dashboard/Dashboard.jsx';
 import CreateTask from './Components/Task Management Dashboard/CreateTask/CreateTask.jsx';
 import { Toaster } from 'react-hot-toast';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const router = createBrowserRouter([
   {
@@ -39,8 +41,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Toaster></Toaster>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <DndProvider backend={HTML5Backend}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </DndProvider>
   </React.StrictMode>
 );
