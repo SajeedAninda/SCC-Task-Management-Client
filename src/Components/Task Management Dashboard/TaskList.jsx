@@ -4,6 +4,9 @@ import { ItemTypes } from './ItemTypes';
 import { AuthContext } from '../Authentication/AuthProvider';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { FaTrash } from "react-icons/fa";
+import Swal from 'sweetalert2';
+
 
 const TaskList = () => {
     let { signedInUser } = useContext(AuthContext);
@@ -37,6 +40,42 @@ const TaskList = () => {
         }
     };
 
+    let calculateDaysToDeadline = (deadline) => {
+        const today = new Date();
+        const deadlineDate = new Date(deadline);
+        const timeDiff = deadlineDate.getTime() - today.getTime();
+        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        return daysDiff;
+    };
+
+    let handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Once Deleted, you cannot revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#05386B',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/deleteTask/${id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.deletedCount > 0) {
+                            toast.success("Task Deleted Successfully");
+                            // Update the state after successful deletion
+                            setTasks(prevTasks => prevTasks.filter(task => task._id !== id));
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error :", error);
+                        toast.error('Error', 'Failed to delete Task');
+                    });
+            }
+        });
+    }
+
     let TodoTask = ({ task, index }) => {
         let [, drag] = useDrag({
             type: ItemTypes.TASK,
@@ -44,8 +83,20 @@ const TaskList = () => {
         });
 
         return (
-            <div ref={drag} key={index} className='p-2 mb-2 bg-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-grab'>
-                <h1>{task?.title}</h1>
+            <div ref={drag} key={index} className='p-4 my-2 bg-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-grab shadow-lg'>
+                <div className='flex justify-between items-center'>
+                    <div className='w-[75%]'>
+                        <h1 className='text-2xl font-bold text-[#363636]'>{index + 1}. {task?.title}</h1>
+                        <h3 className='text-xl font-semibold text-[#363636]'>{task?.description}</h3>
+                        <h3 className='text-lg font-semibold text-red-500'>Days to Deadline: {calculateDaysToDeadline(task?.deadline)}</h3>
+                        <h3 className={`text-lg font-bold rounded-full px-3 w-fit capitalize ${task?.priority === 'high' ? 'bg-red-500' : (task?.priority === 'moderate' ? 'bg-yellow-500' : 'bg-green-400')}`}>
+                            {task?.priority} Priority
+                        </h3>
+                    </div>
+                    <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
+                        <FaTrash className='text-2xl' />
+                    </div>
+                </div>
             </div>
         );
     };
@@ -57,8 +108,20 @@ const TaskList = () => {
         });
 
         return (
-            <div ref={drag} key={index} className='p-2 mb-2 bg-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-grab'>
-                <h1>{task?.title}</h1>
+            <div ref={drag} key={index} className='p-4 my-2 bg-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-grab shadow-lg'>
+                <div className='flex justify-between items-center'>
+                    <div className='w-[75%]'>
+                        <h1 className='text-2xl font-bold text-[#363636]'>{index + 1}. {task?.title}</h1>
+                        <h3 className='text-xl font-semibold text-[#363636]'>{task?.description}</h3>
+                        <h3 className='text-lg font-semibold text-red-500'>Days to Deadline: {calculateDaysToDeadline(task?.deadline)}</h3>
+                        <h3 className={`text-lg font-bold rounded-full px-3 w-fit capitalize ${task?.priority === 'high' ? 'bg-red-500' : (task?.priority === 'moderate' ? 'bg-yellow-500' : 'bg-green-400')}`}>
+                            {task?.priority} Priority
+                        </h3>
+                    </div>
+                    <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
+                        <FaTrash className='text-2xl' />
+                    </div>
+                </div>
             </div>
         );
     };
@@ -70,8 +133,20 @@ const TaskList = () => {
         });
 
         return (
-            <div ref={drag} key={index} className='p-2 mb-2 bg-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-grab'>
-                <h1>{task?.title}</h1>
+            <div ref={drag} key={index} className='p-4 my-2 bg-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 cursor-grab shadow-lg'>
+                <div className='flex justify-between items-center'>
+                    <div className='w-[75%]'>
+                        <h1 className='text-2xl font-bold text-[#363636]'>{index + 1}. {task?.title}</h1>
+                        <h3 className='text-xl font-semibold text-[#363636]'>{task?.description}</h3>
+                        <h3 className='text-lg font-semibold text-red-500'>Days to Deadline: {calculateDaysToDeadline(task?.deadline)}</h3>
+                        <h3 className={`text-lg font-bold rounded-full px-3 w-fit capitalize ${task?.priority === 'high' ? 'bg-red-500' : (task?.priority === 'moderate' ? 'bg-yellow-500' : 'bg-green-400')}`}>
+                            {task?.priority} Priority
+                        </h3>
+                    </div>
+                    <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
+                        <FaTrash className='text-2xl' />
+                    </div>
+                </div>
             </div>
         );
     };
@@ -93,7 +168,7 @@ const TaskList = () => {
 
     return (
         <div className='grid grid-cols-3 gap-6 w-[90%] mx-auto my-6 rounded-lg'>
-            <div ref={dropTodo} className='todo border-2 border-blue-600 rounded-xl p-2'>
+            <div ref={dropTodo} className='todo border-2 border-blue-600 rounded-xl py-2 px-3'>
                 <h2 className='text-center text-2xl font-bold'>Todos</h2>
                 {
                     tasks.length === 0 ?
@@ -105,7 +180,7 @@ const TaskList = () => {
                 }
             </div>
 
-            <div ref={dropOngoing} className='ongoing border-2 border-blue-600 rounded-xl p-2'>
+            <div ref={dropOngoing} className='ongoing border-2 border-blue-600 rounded-xl py-2 px-3'>
                 <h2 className='text-center text-2xl font-bold'>Ongoing</h2>
                 {
                     tasks.length === 0 ?
@@ -117,7 +192,7 @@ const TaskList = () => {
                 }
             </div>
 
-            <div ref={dropCompleted} className='completed border-2 border-blue-600 rounded-xl p-2'>
+            <div ref={dropCompleted} className='completed border-2 border-blue-600 rounded-xl py-2 px-3'>
                 <h2 className='text-center text-2xl font-bold'>Completed</h2>
                 {
                     tasks.length === 0 ?
