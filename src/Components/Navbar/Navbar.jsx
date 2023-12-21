@@ -61,12 +61,12 @@ const Navbar = () => {
                             </NavLink>
 
                             <NavLink
-                                to={"Route-3"}
+                                to={"/contact"}
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
                                 }
                             >
-                                Route-3
+                                Contact
                             </NavLink>
 
                             {
@@ -124,12 +124,12 @@ const Navbar = () => {
                     </NavLink>
 
                     <NavLink
-                        to={"Route-3"}
+                        to={"/contact"}
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
                         }
                     >
-                        Route-3
+                        Contact
                     </NavLink>
                     {
                         signedInUser ?

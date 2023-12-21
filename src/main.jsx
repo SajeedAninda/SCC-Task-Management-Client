@@ -19,6 +19,7 @@ import PrivateRoute from './Components/Authentication/PrivateRoute.jsx';
 import AboutUs from './Components/About Us/AboutUs.jsx';
 import Homepage from './Components/Homepage.jsx';
 import KnowMore from './Components/Know More/KnowMore.jsx';
+import Contact from './Components/Contact/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/knowMore",
         element: <KnowMore></KnowMore>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
       },
     ],
   },
