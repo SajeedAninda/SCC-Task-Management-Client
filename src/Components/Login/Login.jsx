@@ -21,7 +21,7 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
-                navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/dashboard');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -46,7 +46,7 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
-                navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/dashboard');
             }).catch((error) => {
                 console.log(error);
             });
@@ -62,7 +62,7 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
-                navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/dashboard');
             }).catch((error) => {
                 const errorCode = error.code;
                 console.log(errorCode);
