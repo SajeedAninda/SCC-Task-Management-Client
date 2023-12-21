@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const Navbar = () => {
@@ -24,29 +24,40 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                         </label>
                     </div>
-                    <div className="flex-1 justify-center lg:justify-start text-2xl font-bold">
-                        <h2>SCC Technovision</h2>
+                    <div className="flex-1 justify-center lg:justify-start ">
+                        <Link>
+                            <h2 className='text-2xl font-bold'>SCC Technovision</h2>
+                        </Link>
                     </div>
                     <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal flex justify-between items-center gap-6">
                             {/* Navbar menu content here */}
                             <NavLink
-                                to={"/Route-1"}
+                                to={"/"}
                                 end
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
                                 }
                             >
-                                Route-1
+                                Home
                             </NavLink>
-
                             <NavLink
-                                to={"Route-2"}
+                                to={"/aboutUs"}
+                                end
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
                                 }
                             >
-                                Route-2
+                                About Us
+                            </NavLink>
+
+                            <NavLink
+                                to={"/knowMore"}
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
+                                }
+                            >
+                                Know More
                             </NavLink>
 
                             <NavLink
@@ -85,22 +96,31 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal bg-[#5a55ca] text-white flex flex-col justify-normal lg:justify-between items-center gap-6 h-full px-8 pt-6">
                     {/* Navbar menu content here */}
                     <NavLink
-                        to={"/Route-1"}
+                        to={"/"}
                         end
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
                         }
                     >
-                        Route-1
+                        Home
                     </NavLink>
-
                     <NavLink
-                        to={"Route-2"}
+                        to={"/aboutUs"}
+                        end
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
                         }
                     >
-                        Route-2
+                        About Us
+                    </NavLink>
+
+                    <NavLink
+                        to={"knowMore"}
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:bg-white hover:text-[#5a55ca]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:bg-white hover:text-[#5a55ca] rounded-md"
+                        }
+                    >
+                        Know More
                     </NavLink>
 
                     <NavLink

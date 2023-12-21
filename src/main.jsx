@@ -16,11 +16,23 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import UpdateTask from './Components/Task Management Dashboard/UpdateTask.jsx';
 import PrivateRoute from './Components/Authentication/PrivateRoute.jsx';
+import AboutUs from './Components/About Us/AboutUs.jsx';
+import Homepage from './Components/Homepage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    children: [
+      {
+        path: "/",
+        element: <Homepage></Homepage>,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
+    ],
   },
   {
     path: "/login",
