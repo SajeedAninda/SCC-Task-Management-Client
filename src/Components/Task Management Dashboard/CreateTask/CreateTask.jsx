@@ -3,15 +3,30 @@ import { useForm } from 'react-hook-form';
 import { FaArrowRightFromBracket } from 'react-icons/fa6';
 import './create.css';
 import { AuthContext } from '../../Authentication/AuthProvider';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const CreateTask = () => {
     let { register, handleSubmit } = useForm();
     let { signedInUser } = useContext(AuthContext);
     let userEmail = signedInUser?.email
+    let navigate = useNavigate();
 
     let onSubmit = (data) => {
         let taskData = { ...data, status: 'todo', email: userEmail };
-        // console.log(taskData);
+
+        axios.post("http://localhost:5000/createTask", taskData)
+            .then((res) => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    toast.success('Task Added Succesfully!')
+                    navigate("/dashboard")
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     };
 
     let todayDate = new Date().toISOString().split('T')[0];

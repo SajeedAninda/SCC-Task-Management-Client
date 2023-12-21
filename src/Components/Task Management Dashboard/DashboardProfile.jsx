@@ -8,7 +8,6 @@ import { TbLogout2 } from "react-icons/tb";
 
 const DashboardProfile = () => {
     let { signedInUser,logOut } = useContext(AuthContext);
-    console.log(signedInUser?.photoUrl);
 
     let handleLogout = () => {
         logOut()
