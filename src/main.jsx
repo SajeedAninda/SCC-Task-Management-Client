@@ -18,6 +18,7 @@ import UpdateTask from './Components/Task Management Dashboard/UpdateTask.jsx';
 import PrivateRoute from './Components/Authentication/PrivateRoute.jsx';
 import AboutUs from './Components/About Us/AboutUs.jsx';
 import Homepage from './Components/Homepage.jsx';
+import KnowMore from './Components/Know More/KnowMore.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/knowMore",
+        element: <KnowMore></KnowMore>,
       },
     ],
   },
