@@ -20,7 +20,7 @@ const Banner = () => {
                         signedInUser ?
                             <Link to={"/dashboard"}>
                                 <button className='bg-[#5a55ca] px-7 py-3 rounded-md text-white font-bold hover:bg-[#5b55caab] flex justify-between items-center gap-2'>
-                                    Go to Tash Management Dashboard
+                                    Go to Task Management Dashboard
                                     <FaArrowUpRightFromSquare />
                                 </button>
                             </Link>

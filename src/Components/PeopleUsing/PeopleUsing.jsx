@@ -34,7 +34,7 @@ const PeopleUsing = () => {
                             </div>
 
                             <div className="w-full px-4 mb-10 xl:w-1/2 lg:mb-8" data-aos="zoom-in-down" data-aos-anchor-placement="top-bottom">
-                                <span className="text-[#5a55ca] font-bold text-2xl">Why choose us?</span>
+                                <span className="text-[#5a55ca] font-bold text-2xl">Peoples who gets benefitted</span>
                                 <h2 className="mt-2 mb-4 text-[#363636] font-medium text-lg">
                                     With years of experience in the industry, our team of seasoned professionals possesses the knowledge and expertise to turn your ideas into reality.
                                 </h2>
