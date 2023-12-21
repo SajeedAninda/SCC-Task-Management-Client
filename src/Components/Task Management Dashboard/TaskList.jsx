@@ -194,7 +194,7 @@ const TaskList = () => {
     });
 
     return (
-        <div className='grid grid-cols-3 gap-6 w-[90%] mx-auto my-6 rounded-lg'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-[90%] mx-auto my-6 rounded-lg'>
             <div ref={dropTodo} className='todo border-2 border-blue-600 rounded-xl py-2 px-3'>
                 <h2 className='text-center text-2xl font-bold'>Todos</h2>
                 {
