@@ -6,6 +6,9 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FaTrash } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import { FaPenAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 
 const TaskList = () => {
@@ -93,8 +96,16 @@ const TaskList = () => {
                             {task?.priority} Priority
                         </h3>
                     </div>
-                    <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
-                        <FaTrash className='text-2xl' />
+                    <div className='flex gap-4 flex-col'>
+                        <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
+                            <FaTrash className='text-2xl' />
+                        </div>
+
+                        <Link to={`/updateTask/${task._id}`}>
+                            <div className='w-25% bg-slate-800 text-white p-2 rounded-full cursor-pointer'>
+                                <FaPenAlt className='text-2xl' />
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -118,8 +129,16 @@ const TaskList = () => {
                             {task?.priority} Priority
                         </h3>
                     </div>
-                    <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
-                        <FaTrash className='text-2xl' />
+                    <div className='flex gap-4 flex-col'>
+                        <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
+                            <FaTrash className='text-2xl' />
+                        </div>
+
+                        <Link to={`/updateTask/${task._id}`}>
+                            <div className='w-25% bg-slate-800 text-white p-2 rounded-full cursor-pointer'>
+                                <FaPenAlt className='text-2xl' />
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -143,8 +162,16 @@ const TaskList = () => {
                             {task?.priority} Priority
                         </h3>
                     </div>
-                    <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
-                        <FaTrash className='text-2xl' />
+                    <div className='flex gap-4 flex-col'>
+                        <div onClick={() => handleDelete(task._id)} className='w-25% bg-red-500 text-white p-2 rounded-full cursor-pointer'>
+                            <FaTrash className='text-2xl' />
+                        </div>
+
+                        <Link to={`/updateTask/${task._id}`}>
+                            <div className='w-25% bg-slate-800 text-white p-2 rounded-full cursor-pointer'>
+                                <FaPenAlt className='text-2xl' />
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

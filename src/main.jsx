@@ -14,6 +14,7 @@ import CreateTask from './Components/Task Management Dashboard/CreateTask/Create
 import { Toaster } from 'react-hot-toast';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import UpdateTask from './Components/Task Management Dashboard/UpdateTask.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
     path: "/createTask",
     element: <CreateTask></CreateTask>,
   },
+  {
+    path: "/updateTask/:id",
+    loader: ({ params }) => fetch(`http://localhost:5000/getTaskbyId/${params.id}`),
+    element: <UpdateTask></UpdateTask>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
