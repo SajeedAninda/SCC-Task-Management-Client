@@ -20,6 +20,11 @@ import AboutUs from './Components/About Us/AboutUs.jsx';
 import Homepage from './Components/Homepage.jsx';
 import KnowMore from './Components/Know More/KnowMore.jsx';
 import Contact from './Components/Contact/Contact.jsx';
+import { TouchBackend } from 'react-dnd-touch-backend';
+
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+const backend = isTouchDevice ? TouchBackend : HTML5Backend;
+
 
 const router = createBrowserRouter([
   {
@@ -70,7 +75,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Toaster></Toaster>
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider
+      backend={backend} options={{ enableMouseEvents: true }}>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
