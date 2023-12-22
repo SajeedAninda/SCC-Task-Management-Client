@@ -17,7 +17,7 @@ const TaskList = () => {
     let [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/getTasks/${userEmail}`)
+        axios.get(`https://ssc-techno-task-management-server.vercel.app/getTasks/${userEmail}`)
             .then(res => {
                 setTasks(res.data);
             })
@@ -37,7 +37,7 @@ const TaskList = () => {
             setTasks(updatedTasks);
             toast('Task updated successfully', { duration: 3000, type: 'success' });
 
-            await axios.patch(`http://localhost:5000/updateTask/${id}`, { status: newStatus });
+            await axios.patch(`https://ssc-techno-task-management-server.vercel.app/updateTask/${id}`, { status: newStatus });
         } catch (error) {
             console.error('Error updating task status:', error);
         }
@@ -62,7 +62,7 @@ const TaskList = () => {
             confirmButtonText: 'Yes, Delete!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/deleteTask/${id}`)
+                axios.delete(`https://ssc-techno-task-management-server.vercel.app/deleteTask/${id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {

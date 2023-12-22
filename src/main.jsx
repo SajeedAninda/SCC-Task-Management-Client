@@ -62,7 +62,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/updateTask/:id",
-    loader: ({ params }) => fetch(`http://localhost:5000/getTaskbyId/${params.id}`),
+    loader: ({ params }) => fetch(`https://ssc-techno-task-management-server.vercel.app/getTaskbyId/${params.id}`),
     element: <PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>
   }
 ]);

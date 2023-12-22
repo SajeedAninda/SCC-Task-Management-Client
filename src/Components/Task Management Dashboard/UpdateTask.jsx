@@ -17,7 +17,7 @@ const UpdateTask = () => {
     let onSubmit = (data) => {
         let taskData = { ...data, status: 'todo', email: userEmail };
 
-        axios.put(`http://localhost:5000/updateTask/${singleTaskData?._id}`, taskData)
+        axios.put(`https://ssc-techno-task-management-server.vercel.app/updateTask/${singleTaskData?._id}`, taskData)
             .then((res) => {
                 // console.log(res.data);
                 if (res.data.modifiedCount > 0) {

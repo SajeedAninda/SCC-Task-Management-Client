@@ -16,7 +16,7 @@ const CreateTask = () => {
     let onSubmit = (data) => {
         let taskData = { ...data, status: 'todo', email: userEmail };
 
-        axios.post("http://localhost:5000/createTask", taskData)
+        axios.post("https://ssc-techno-task-management-server.vercel.app/createTask", taskData)
             .then((res) => {
                 console.log(res.data);
                 if (res.data.insertedId) {
